@@ -1,5 +1,9 @@
 # df_maven cookbook
 this cookbook was written to install and configure the maven dependency grabber for Java libraries and install them on the system. 
+
+* to verify install at the end of the run, simply log into the machine and run 
+mvn -version 
+
 # Requirements
 this cookbook requires a working version of Java to be installed. an open JDK of the newest variety is strongly suggested for it to function. Minus the occasional commit issue, using the community java cookbook is the best course of action.
 
