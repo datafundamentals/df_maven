@@ -14,7 +14,7 @@ include_recipe "java"
 
 # downloads the maven rpm from the website
 remote_file "/home/vagrant/apache-maven-3.1.1-bin.tar.gz" do 
-	source node['df_maven']['url']
+	source node['df_maven']['source']
 	owner "root" 
 	group "root"
 	mode "0755" 
