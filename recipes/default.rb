@@ -10,10 +10,17 @@
 
 # downloads and installs java to be used on the system.
 # the community recipe sets the JAVA_HOME on its own. if using a different cookbook you might have to write it on your own.
-include_recipe "java"
+include_recipe "df_java::default"
+
+directory "/usr/local/maven" do 
+	user "root"
+	mode "0755"
+	recursive true
+	action :create 
+end
 
 # downloads the maven rpm from the website
-remote_file "/home/vagrant/apache-maven-3.1.1-bin.tar.gz" do 
+remote_file "/usr/local/maven/apache-maven-3.1.1-bin.tar.gz" do 
 	source node['df_maven']['source']
 	owner "root" 
 	group "root"
@@ -23,7 +30,7 @@ end
 
 # unzips the file which distributes the directories
 execute "unzip_file" do 
-	cwd "/home/vagrant" 
+	cwd "/usr/local/maven" 
 	command "tar -xzvf apache-maven-3.1.1-bin.tar.gz" 
 	action :run
 end
