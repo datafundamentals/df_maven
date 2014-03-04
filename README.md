@@ -9,7 +9,12 @@ this cookbook requires a working version of Java to be installed. an open JDK of
 
 This will be used for both ubuntu and CentOS systems
 # Usage
-This is open to anybody who would choose it, and should be able to be used for both dev envrironments and servers
+This is open to anybody who would choose it, and should be able to be used for both dev envrironments 
+and servers
+
+**AS A NOTE**
+Version 0.1.3- dedicated to the jenkins box
+Version 0.1.4- advanced version for the vagrant vm testing
 # Attributes
  
  * node ['df_maven']['url']: the site link where you would download the mirror for development

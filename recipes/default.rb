@@ -10,10 +10,10 @@
 
 # downloads and installs java to be used on the system.
 # the community recipe sets the JAVA_HOME on its own. if using a different cookbook you might have to write it on your own.
-include_recipe "df_java::default"
+# include_recipe "df_java::default"
 
 directory "/usr/local/maven" do 
-	user "root"
+	user "csreirj"
 	mode "0755"
 	recursive true
 	action :create 
