@@ -1,6 +1,6 @@
 ---
 driver:
-  synced_folders: [["/Users/thisguy/work/binaries", "/vagrant/binaries"]]
+  synced_folders: [["/vagrant/binaries", "/vagrant/binaries"]]
   name: vagrant
 
 provisioner:

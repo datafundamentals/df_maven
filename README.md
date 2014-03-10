@@ -7,6 +7,8 @@ mvn -version
 # Requirements
 this cookbook requires a working version of Java to be installed. an open JDK of the newest variety is strongly suggested for it to function. Minus the occasional commit issue, using the community java cookbook is the best course of action.
 
+**NOTE** Please pay attention and adjust the .kitchen.yml file in the synced folder as we have it set up for our systems. This will not spin up unless you adjust it
+
 This will be used for both ubuntu and CentOS systems
 # Usage
 This is open to anybody who would choose it, and should be able to be used for both dev envrironments 
