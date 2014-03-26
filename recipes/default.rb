@@ -40,15 +40,3 @@ include_recipe "df_maven::set_maven_home"
 # puts maven in the PATH so it can run as a program
 # node['path'] is in the default attributes
 
-
-file node['path_file'] do 
-	new_lines = "export PATH=$PATH:$MAVEN_HOME/bin"
-	only_if do
-		current_content = File.read("#{node['path_file']}")
-		current_content.index("MAVEN_HOME").nil?
-	end
-
-	current_content = File.read("#{node['path_file']}")
-	new_content = current_content + new_lines
-	content "#{new_content}\n"
-end
