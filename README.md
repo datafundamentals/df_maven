@@ -5,7 +5,12 @@ this cookbook was written to install and configure the maven dependency grabber 
 mvn -version 
 
 # Requirements
-this cookbook requires a working version of Java to be installed. an open JDK of the newest variety is strongly suggested for it to function. Minus the occasional commit issue, using the community java cookbook is the best course of action.
+
+* NOTE1: This cookbook (along with almost all dataFundamentals cookbooks) requires that you have local binaries to install other programs. If you are looking to use these as is, download the df_base cookbook to pull all the repositories. If you are looking to only pull certain binaries, please select the install flavor you would like in the attributes. The only one currently available is for Maven
+*NOTE2: Please look at the .kitchen.yml file and adjust the synced folder from what we have run or it won't work
+this cookbook requires a working version of Java to be installed. an open JDK of the newest variety is strongly suggested for it to function. Minus the occasional commit issue, using the community java cookbook is the best course of action. this can be paired with the df_java cookbook
+
+This is designed to work using a local binary. the one for this cookbook is located at docs.datafundamentals.com/lib
 
 **NOTE** Please pay attention and adjust the .kitchen.yml file in the synced folder as we have it set up for our systems. This will not spin up unless you adjust it
 
