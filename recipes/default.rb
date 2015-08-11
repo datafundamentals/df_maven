@@ -1,42 +1,39 @@
-#
-# Cookbook Name:: df_maven
-# Recipe:: default
-#
-# Copyright (C) 2014 YOUR_NAME
-# 
-# All rights reserved - Do Not Redistribute
-#
 
 
-# downloads and installs java to be used on the system.
-# the community recipe sets the JAVA_HOME on its own. if using a different cookbook you might have to write it on your own.
-# include_recipe "df_java::default"
+log "debug_print" do 
+    "INITIATING MAVEN RUN FROM #{node['df_maven']['download_source']}"
+    level :info
+end
 
-directory "/usr/local/maven" do 
-	user "csreirj"
+template '/home/vagrant/README_MAVEN.txt' do 
+  source 'README_MAVEN.txt.erb'
+  mode "0644"
+  only_if { ::File.exists?('/home/vagrant') }
+end
+
+template '/home/vagrant/chef_maven_attribute_values.txt' do 
+  source 'attribute_values.txt.erb'
+  mode "0644"
+  only_if { ::File.exists?('/home/vagrant') }
+end
+
+directory node['df_maven']['local_dir'] do 
 	mode "0755"
 	recursive true
 	action :create 
 end
 
-# downloads the maven rpm from the website
-remote_file "/usr/local/maven/apache-maven-3.1.1-bin.tar.gz" do 
-	source node['df_maven']['source']
-	owner "root" 
-	group "root"
+remote_file node['df_maven']['remote_file'] do 
+	source node['df_maven']['download_source']
+	#source "http://docs.datafundamentals.com/lib/eclipse-jee-mars-R-linux-gtk-x86_64.tar.gz"
 	mode "0755" 
 	action :create_if_missing
 end
 
-# unzips the file which distributes the directories
 execute "unzip_file" do 
-	cwd "/usr/local/maven" 
-	command "tar -xzvf apache-maven-3.1.1-bin.tar.gz" 
+	cwd node['df_maven']['local_dir']
+	command "tar -xzvf " + node['df_maven']['tar_name']
 	action :run
 end
-# sets the maven home in a different recipe 
+
 include_recipe "df_maven::set_maven_home"
-
-# puts maven in the PATH so it can run as a program
-# node['path'] is in the default attributes
-
